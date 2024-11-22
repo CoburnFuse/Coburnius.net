@@ -12,6 +12,8 @@ html {
     /*Background*/
     background-image: url(assets/images/background.jpg);
     height:100%;
+    background-size:cover;
+    background-position:fixed;
 }
 
 /*List related stuff*/
@@ -27,6 +29,10 @@ li::before {
 a {
     color: #4da9ff;
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /*IDs*/
