@@ -6,10 +6,7 @@
 
 /*Overrides*/
 html {
-    /*Font*/
     font-family: 'GaretBook';
-
-    /*Background*/
     background-image: url(assets/images/background.jpg);
     height:100%;
     background-size:cover;
@@ -19,10 +16,12 @@ html {
 /*List related stuff*/
 ul {
     list-style-type: none;
+    padding-left:15px;
+
 }
 
 li::before {
-    content: "¤ ";
+    content: "+ ";
 }
 
 /*Link override */
@@ -37,18 +36,13 @@ a:hover {
 
 /*IDs*/
 #contentHolderMain {
-    /*Basic stuff*/
-    max-width: 640px;
+    max-width: 620px;
     padding: 20px;
     margin: auto;
     min-height: 720px;
-
-    /*Font related*/
     font-size: 16px;
     color:white;
-
-    /*Background*/
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:rgba(0, 0, 0, 0.6);
     border-radius: 2%;
 }
 
