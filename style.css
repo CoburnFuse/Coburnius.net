@@ -22,16 +22,6 @@ li::before {
     content: "+ ";
 }
 
-/*Link override */
-a {
-    color: #4da9ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 /*IDs*/
 #contentHolderMain {
     max-width: 620px;
@@ -51,7 +41,9 @@ a:hover {
 }
 
 #navbar {
-    margin-bottom:20px;
+    background-color: #001a33; 
+    padding:10px; 
+    margin:0 -20px 20px -20px;
 }
 
 /*Classes*/
@@ -65,6 +57,21 @@ a:hover {
     display:block;
 }
 
+/*Link stuff*/
+#currentPageLink{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .linkNotExisting{
     color: gray;
+}
+
+a {
+    color: #4da9ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
