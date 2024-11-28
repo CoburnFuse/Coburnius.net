@@ -75,3 +75,18 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/*Gallery*/
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#gallery .imageHalf {
+    width: 50%;
+}
+
+#gallery img {
+    width: calc(100% - (20px * 2));
+    margin: 20px;
+}
