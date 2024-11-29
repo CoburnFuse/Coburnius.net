@@ -1,3 +1,5 @@
+![Coburnius Logo](https://github.com/CoburnFuse/Coburnius.net/blob/main/favicon.png?raw=true)
+
 # Coburnius.net
 My personal website hosted on a corner of the internet somewhere.
 
