@@ -11,17 +11,6 @@ html {
     background-size:cover;
 }
 
-/*List related stuff*/
-ul {
-    list-style-type: none;
-    padding-left:15px;
-
-}
-
-li::before {
-    content: "❄ ";
-}
-
 /*IDs*/
 #contentHolderMain {
     max-width: 620px;
@@ -96,4 +85,27 @@ a:hover {
     width: calc(100% - (20px * 2));
     margin: 20px;
     border-radius: 1rem;
+}
+
+/*New list CSS*/
+dl {
+    display: grid;
+    gap: 1px 0px;
+}
+
+dt {
+    position: relative;
+}
+
+dt::before {
+    content: "❄ ";
+    margin-right: 4px;
+}
+
+.doubleColumn{
+    grid-template-columns: max-content auto;
+}
+
+.singleColumn{
+    grid-template-columns: max-content;
 }
