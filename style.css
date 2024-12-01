@@ -11,17 +11,6 @@ html {
     background-size:cover;
 }
 
-/*List related stuff*/
-ul {
-    list-style-type: none;
-    padding-left:15px;
-
-}
-
-li::before {
-    content: "❄ ";
-}
-
 /*IDs*/
 #contentHolderMain {
     max-width: 620px;
@@ -96,4 +85,25 @@ a:hover {
     width: calc(100% - (20px * 2));
     margin: 20px;
     border-radius: 1rem;
+}
+
+/*Tables*/
+.infoTable{
+    margin-bottom: 10px;
+    max-width:100%;
+}
+
+.homepageTableDescription{
+    width:100px;
+    white-space: nowrap;
+
+}
+
+.tableDescription::before{
+    content: "❄ ";
+}
+
+.homepageTableValue{
+    width:auto;
+    word-break:break-word;
 }
