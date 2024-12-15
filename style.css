@@ -1,14 +1,22 @@
 /*Assets*/
 @font-face {
-    font-family: 'GaretBook';
-    src: url(assets/Garet-Book.ttf) format('truetype');
+    font-family: 'Quicksand';
+    src: url(assets/fonts/Quicksand_Book.otf) format('opentype');
+    font-weight:normal;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url(assets/fonts/Quicksand_Bold.otf) format('opentype');
+    font-weight:bold;
 }
 
 /*Overrides*/
 html {
-    font-family: 'GaretBook';
+    font-family: 'Quicksand';
     background: url(assets/images/background.jpg) no-repeat center center fixed;
     background-size:cover;
+    font-size: 17px;
 }
 
 /*IDs*/
@@ -17,7 +25,6 @@ html {
     padding: 20px;
     margin: auto;
     min-height: 720px;
-    font-size: 16px;
     color:white;
     background-color:rgba(0, 0, 0, 0.6);
     border-radius: 1rem;
