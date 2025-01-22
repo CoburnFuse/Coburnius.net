@@ -4,7 +4,7 @@
 My personal website hosted on a corner of the internet somewhere.
 
 ## Credits
-Profile picture by [まかだみぁ](https://www.pixiv.net/en/users/2782928).
+Profile picture by [Sakishimaenoki](https://www.pixiv.net/en/users/88277).
 Background image by [R_A_D_A](https://www.pixiv.net/en/users/16162616).
 
 Music in the mainframe project by Remi Gallego and Ryan Burge.
