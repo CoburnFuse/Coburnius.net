@@ -96,22 +96,21 @@ a:hover {
 }
 
 /*Tables*/
-.infoTable{
+table{
     margin-bottom: 10px;
     max-width:100%;
 }
 
-.homepageTableDescription{
-    width:100px;
-    white-space: nowrap;
-
-}
-
-.tableDescription::before{
+td:first-child:before{
     content: "❄ ";
 }
 
-.homepageTableValue{
+.homepageTable td:nth-child(1){
+    width:100px;
+    white-space: nowrap;
+}
+
+.homepageTable td:nth-child(2){
     width:auto;
     word-break:break-word;
 }
