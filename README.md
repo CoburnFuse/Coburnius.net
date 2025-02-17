@@ -3,6 +3,8 @@
 # Coburnius.net
 My personal website hosted on a corner of the internet somewhere.
 
+Issues regarding the TTRPG sheets should use the 'ttrpg' label.
+
 ## Credits
 Profile picture by [Sakishimaenoki](https://www.pixiv.net/en/users/88277).
 Background image by [R_A_D_A](https://www.pixiv.net/en/users/16162616).
