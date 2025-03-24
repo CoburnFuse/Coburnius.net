@@ -106,7 +106,7 @@ td:first-child:before{
 }
 
 .homepageTable td:nth-child(1){
-    width:100px;
+    width:160px;
     white-space: nowrap;
 }
 
