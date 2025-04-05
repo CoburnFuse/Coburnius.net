@@ -14,7 +14,7 @@
   <meta content="Online homeland of your local dice goblin, game enjoyer, anime watcher and former commander of the Eagle Union." property="description">
 
   <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 
     <!--Navbar start-->
     <nav id='navbar' class='textCenter'>
-      <nobr>[ <a href='https://coburnius.net' title='Homepage' id='currentPageLink'>Home</a> ]</nobr>
+      <nobr>[ <a href='#' title='Homepage' id='currentPageLink'>Home</a> ]</nobr>
       <nobr>[ <a href='https://coburnius.net/creations.html' title='Creations'>Creations</a> ]</nobr>
       <nobr>[ <a href='https://coburnius.net/ttrpg.html' title='TTRPG'>TTRPG</a> ]</nobr>
       <nobr>[ <a href='https://gameslist.mistralton.net' target='_blank' title='Game list (on my NAS)'>Owned games</a> ]</nobr>
@@ -77,6 +77,17 @@
     </section>
     
   </article>
+
+  <!--Audio easter egg, which unfortunately requires some JS-->
+  <audio id="queenOfPoi" src="assets/audio/poi.ogg"></audio>
+  <script>
+    document.getElementById('currentPageLink').addEventListener('click', function(e){
+      e.preventDefault();
+
+      var playPoi = document.getElementById('queenOfPoi');
+      playPoi.play();
+    });
+  </script>
 </body>
 
 </html>
