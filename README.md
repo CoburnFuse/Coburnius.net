@@ -7,7 +7,7 @@ Issues regarding the TTRPG sheets should use the 'ttrpg' label.
 
 ## Credits
 Profile picture by [星星星光光](https://www.pixiv.net/en/users/21465018).
-Background image by [R_A_D_A](https://www.pixiv.net/en/users/16162616).
+Background image by [Victoria Joh](https://www.vhjoh.com/).
 
 Music in the mainframe project by Remi Gallego and Ryan Burge.
 
