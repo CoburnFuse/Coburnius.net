@@ -6,7 +6,6 @@ My personal website hosted on a corner of the internet somewhere.
 Issues regarding the TTRPG sheets should use the 'ttrpg' label.
 
 ## Credits
-Profile picture by [Yuta Moeki](https://www.pixiv.net/en/users/359433).
 Background image by [Victoria Joh](https://www.vhjoh.com/).
 
 Music in the mainframe project by Remi Gallego and Ryan Burge.
