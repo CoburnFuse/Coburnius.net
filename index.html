@@ -23,11 +23,11 @@
     <!--Navbar start-->
     <nav id='navbar' class='textCenter'>
       <script>
-        (async () => {
-          const res = await fetch('assets/navbar.html');
-          const data = await res.text();
-          document.getElementById('navbar').innerHTML = data;
-        })();
+        fetch('assets/navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+          });
       </script>
     </nav>
     <!--Navbar end-->
@@ -77,6 +77,17 @@
     </section>
     
   </article>
+
+  <!--Audio easter egg-->
+  <audio id="queenOfPoi" src="assets/audio/poi.ogg"></audio>
+  <script>
+    document.getElementById('currentPageLink').addEventListener('click', function(e){
+      e.preventDefault();
+
+      var playPoi = document.getElementById('queenOfPoi');
+      playPoi.play();
+    });
+  </script>
 </body>
 
 </html>

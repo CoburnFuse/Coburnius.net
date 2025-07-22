@@ -23,11 +23,11 @@
     <!--Navbar start-->
     <nav id='navbar' class='textCenter'>
       <script>
-        (async () => {
-          const res = await fetch('assets/navbar.html');
-          const data = await res.text();
-          document.getElementById('navbar').innerHTML = data;
-        })();
+        fetch('assets/navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+          });
       </script>
     </nav>
     <!--Navbar end-->
