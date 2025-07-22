@@ -55,11 +55,6 @@ html {
 }
 
 /*Link stuff*/
-#currentPageLink{
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 .linkNotExisting{
     color: gray;
 }
