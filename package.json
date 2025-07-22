@@ -1,0 +1,6 @@
+{
+  "name": "coburnius.net",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
