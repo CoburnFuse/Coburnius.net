@@ -43,6 +43,10 @@ html {
     margin:0 -25px 20px -25px;
 }
 
+#currentPage{
+    font-weight: bold;
+}
+
 /*Classes*/
 .textCenter {
     text-align: center;
