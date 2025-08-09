@@ -11,12 +11,19 @@ const header = fs.readFileSync(path.join(includes, 'header.html'), 'utf8');
 const skip = new Set(['build.js', 'package.json', 'README.md', 'dist', 'includes']);
 
 function highlightCurrent(nav, page) {
-  return nav.replace(/(<a\s+href=['"])([^'"]+)(['"][^>]*>)/g, (m, p1, href, p3) => {
-    if (href.replace(/^\//, '') === page && !/id=/.test(m)) {
+  return nav.replace(/(<a\s+href=['"])([^'"]+)(['"][^>]*>)/g, (match, p1, href, p3) => {
+    if (href.replace(/^\//, '') === page && !/id=/.test(match)) {
       return `${p1}${href}${p3.slice(0, -1)} id="currentPage">`;
     }
-    return m;
+    return match;
   });
+}
+
+function copyFileSync(source, target) {
+  if (fs.existsSync(target) && fs.lstatSync(target).isDirectory()) {
+    target = path.join(target, path.basename(source));
+  }
+  fs.writeFileSync(target, fs.readFileSync(source));
 }
 
 function process(src, dest) {
@@ -30,19 +37,16 @@ function process(src, dest) {
 
     if (entry.isDirectory()) {
       process(from, to);
-    } else {
+    } else if (entry.name.endsWith('.html')) {
       let content = fs.readFileSync(from, 'utf8');
-
-      if (entry.name.endsWith('.html')) {
-        const rel = path.relative(root, from).split(path.sep);
-        const page = rel.length === 1 ? entry.name : rel[0] + '.html';
-        content = content
-          .replace('<!-- NAVBAR_INCLUDE -->', highlightCurrent(navbar, page))
-          .replace('<!-- HEADER_INCLUDE -->', header);
-        console.log(`Processed ${from} → ${to} (page: ${page})`);
-      }
-
+      const rel = path.relative(root, from).split(path.sep);
+      const page = rel.length === 1 ? entry.name : rel[0] + '.html';
+      content = content
+        .replace('<!-- NAVBAR_INCLUDE -->', highlightCurrent(navbar, page))
+        .replace('<!-- HEADER_INCLUDE -->', header);
       fs.writeFileSync(to, content);
+    } else {
+      copyFileSync(from, to);
     }
   }
 }
