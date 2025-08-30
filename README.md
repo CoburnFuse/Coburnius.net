@@ -3,11 +3,8 @@
 # Coburnius.net
 My personal website hosted on a corner of the internet somewhere.
 
-Issues regarding the TTRPG sheets should use the 'ttrpg' label.
-
 ## Credits
-Background image by [Victoria Joh](https://www.vhjoh.com/).
-
-Music in the mainframe project by Remi Gallego and Ryan Burge.
-
-And especially [FloatingMilkshake](https://github.com/FloatingMilkshake) for pushing me out of my stubbornness of wanting a fancy site that isn't even remotely as good as this.
+- [FloatingMilkshake](https://github.com/FloatingMilkshake) for pushing me out of my stubbornness of wanting a fancy site that isn't even remotely as good as this.
+- [Victoria Joh](https://www.vhjoh.com/) for the background image used on the site.
+- Remi Gallego and Ryan Burge for the music in the mainframe "project".
+- Andrew Paglinawan for the Quicksand font.

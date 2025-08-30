@@ -47,6 +47,10 @@ html {
     font-weight: bold;
 }
 
+#errorImg{
+    max-height: 350px;
+}
+
 /*Classes*/
 .textCenter {
     text-align: center;
@@ -78,17 +82,17 @@ a:hover {
     flex-wrap: wrap;
 }
 
-#gallery .imageHalf {
+#gallery.imageHalf a{
     width: 50%;
 }
 
 @media only screen and (max-width: 600px){
-    #gallery .imageHalf {
+    #gallery.imageHalf a{
         width: 100%;
     }
 }
 
-#gallery img {
+#gallery img{
     width: calc(100% - (5px * 2));
     margin: 5px 5px 0 5px;
     border-radius: 1rem;
