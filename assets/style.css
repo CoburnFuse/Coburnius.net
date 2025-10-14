@@ -62,6 +62,12 @@ html {
     display:block;
 }
 
+.recommendationQuote{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 /*Link stuff*/
 .linkNotExisting{
     color: gray;
