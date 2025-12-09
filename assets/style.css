@@ -25,11 +25,11 @@ html {
 #contentHolderMain {
     max-width: 620px;
     padding: 20px;
-    margin: auto;
+    margin: -8px auto 0 auto;
     min-height: 720px;
     color:white;
     background-color:rgba(0, 0, 0, 0.75);
-    border-radius: 1rem;
+    border-radius: 0 0 1rem 1rem;
 }
 
 #profilePicture {
