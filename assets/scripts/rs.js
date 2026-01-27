@@ -2,30 +2,34 @@ const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "
 
 async function fetchJSONData(username) {
     try {
-        // Replace with your actual Worker URL from Cloudflare
-        const workerUrl = `https://rs-api-proxy.coburnius.net/?user=${username}`;
+        const workerUrl = `https://rs-api-proxy.coburnius.net/?user=${encodeURIComponent(username)}`;
         
         const response = await fetch(workerUrl);
         
         if (!response.ok) {
+            if (response.status === 429) {
+                throw new Error("Rate limit exceeded. Please try again in a few minutes.");
+            }
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         
         return await response.json();
     } catch (error) {
         console.error('Failed to fetch data:', error);
+        document.getElementById('stats').innerHTML = `<p style="color: red;">${error.message}</p>`;
     }
 }
 
 async function writeStatsToSite(username) {
-
-    document.getElementById('stats').innerHTML = "<p>Loading player stats, if it takes longer than ten seconds, please reload the page.</p>";
+    document.getElementById('stats').innerHTML = "<p>Loading player stats...</p>";
 
     const data = await fetchJSONData(username);
 
     if (data && data.skillvalues) {
+        const now = new Date();
+        const timestamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
         const statsArray = data.skillvalues.sort((a, b) => a.id - b.id);
-        
         let tableRows = "";
 
         for (let i = 0; i < statsArray.length; i += 2) {
@@ -47,11 +51,14 @@ async function writeStatsToSite(username) {
         }
 
         const statsToPushToPage = `
-            <strong>${data.name}</strong><br>
-            (Combat: ${data.combatlevel}/Total: ${data.totalskill})<br><br>
+            <div style="margin-bottom: 10px;">
+                <strong>${data.name}</strong><br>
+                <span>Combat: ${data.combatlevel} | Total: ${data.totalskill}</span><br>
+            </div>
             <table class='rsTable'>
                 ${tableRows}
             </table>
+            <small><i>Last Updated: ${timestamp}</i></small>
         `;
 
         document.getElementById('stats').innerHTML = statsToPushToPage;
