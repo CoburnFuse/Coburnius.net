@@ -58,7 +58,6 @@ async function writeStatsToSite(username) {
             <table class='rsTable'>
                 ${tableRows}
             </table>
-            <small><i>Last Updated: ${timestamp}</i></small>
         `;
 
         document.getElementById('stats').innerHTML = statsToPushToPage;
