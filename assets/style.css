@@ -125,3 +125,11 @@ td:first-child:before{
     width:auto;
     word-break:break-word;
 }
+
+.rsTable td:first-child:before{
+    content: "";
+}
+
+.rsTable td:nth-child(1), td:nth-child(3){
+    width:200px;
+}
