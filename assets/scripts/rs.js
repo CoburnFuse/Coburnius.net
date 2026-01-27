@@ -2,7 +2,10 @@ const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "
 
 async function fetchJSONData(username) {
     try {
-        const response = await fetch('https://apps.runescape.com/runemetrics/profile?user=' + username);
+        // Replace with your actual Worker URL from Cloudflare
+        const workerUrl = `https://rs-api-proxy.coburnius.net/?user=${username}`;
+        
+        const response = await fetch(workerUrl);
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
