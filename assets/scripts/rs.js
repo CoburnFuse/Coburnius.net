@@ -53,7 +53,7 @@ async function writeStatsToSite(username) {
         const statsToPushToPage = `
             <div style="margin-bottom: 10px;">
                 <strong>${data.name}</strong><br>
-                <span>Combat: ${data.combatlevel} | Total: ${data.totalskill}</span><br>
+                <span>Combat: ${data.combatlevel} / Total: ${data.totalskill}</span><br>
             </div>
             <table class='rsTable'>
                 ${tableRows}
