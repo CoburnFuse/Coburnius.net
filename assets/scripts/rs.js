@@ -19,7 +19,7 @@ async function fetchJSONData(username) {
 
 async function writeStatsToSite(username) {
 
-    document.getElementById('stats').innerHTML = "<p>Loading player stats...</p>";
+    document.getElementById('stats').innerHTML = "<p>Loading player stats, if it takes longer than ten seconds, please reload the page.</p>";
 
     const data = await fetchJSONData(username);
 
