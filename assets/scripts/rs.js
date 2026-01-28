@@ -26,9 +26,6 @@ async function writeStatsToSite(username) {
     const data = await fetchJSONData(username);
 
     if (data && data.skillvalues) {
-        const now = new Date();
-        const timestamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
         const statsArray = data.skillvalues.sort((a, b) => a.id - b.id);
         let tableRows = "";
 
