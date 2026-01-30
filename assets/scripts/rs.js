@@ -1,31 +1,27 @@
 const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction", "Summoning", "Dungeoneering", "Divination", "Invention", "Archaeology", "Necromancy"];
 
-async function fetchJSONData(username) {
+async function fetchJSONData() {
     try {
-        const workerUrl = `https://rs-api-proxy.coburnius.net/?user=${encodeURIComponent(username)}`;
-        
+        const workerUrl = `https://rs-api-proxy.coburnius.net/?t=${Date.now()}`;
         const response = await fetch(workerUrl);
+        const text = await response.text();
         
-        if (!response.ok) {
-            if (response.status === 429) {
-                throw new Error("Rate limit exceeded. Please try again in a few minutes.");
-            }
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        console.log("Raw Worker Response:", text);
         
-        return await response.json();
+        const data = JSON.parse(text);
+        return data;
     } catch (error) {
-        console.error('Failed to fetch data:', error);
-        document.getElementById('stats').innerHTML = `<p style="color: red;">${error.message}</p>`;
+        console.error('Frontend Fetch Error:', error);
     }
 }
 
-async function writeStatsToSite(username) {
-    document.getElementById('stats').innerHTML = "<p>Loading player stats...</p>";
+async function writeStatsToSite() {
+    const envelope = await fetchJSONData();
 
-    const data = await fetchJSONData(username);
-
-    if (data && data.skillvalues) {
+    if (envelope && envelope.stats && envelope.stats.skillvalues) {
+        const data = envelope.stats;
+        const lastUpdated = new Date(envelope.lastUpdated).toLocaleString();
+        
         const statsArray = data.skillvalues.sort((a, b) => a.id - b.id);
         let tableRows = "";
 
@@ -55,8 +51,11 @@ async function writeStatsToSite(username) {
             <table class='rsTable'>
                 ${tableRows}
             </table>
+            <small>Last Updated: ${lastUpdated}</small>
         `;
 
         document.getElementById('stats').innerHTML = statsToPushToPage;
     }
 }
+
+writeStatsToSite();
