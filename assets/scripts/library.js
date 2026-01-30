@@ -1,4 +1,4 @@
-function dateTimeFormat(date) {
+function dateTimeFormat(date, local) {
     const getSuffix = (day) => {
         if (day > 3 && day < 21) return 'th';
         switch (day % 10) {
@@ -18,7 +18,7 @@ function dateTimeFormat(date) {
         minute: '2-digit', 
         second: '2-digit',
         hour12: false,
-        timeZone: "Europe/Amsterdam" 
+        ...(local ? {} : { timeZone: "Europe/Amsterdam" })
     });
 
     return `${dayNum}${suffix} of ${month}, ${year} at ${time}`;

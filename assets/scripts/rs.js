@@ -22,7 +22,7 @@ async function writeStatsToSite() {
 
     if (envelope && envelope.stats && envelope.stats.skillvalues) {
         const data = envelope.stats;
-        const lastUpdated = dateTimeFormat(new Date(envelope.lastUpdated));
+        const lastUpdated = dateTimeFormat(new Date(envelope.lastUpdated), true);
         
         const statsArray = data.skillvalues.sort((a, b) => a.id - b.id);
         let tableRows = "";
