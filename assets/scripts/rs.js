@@ -16,6 +16,8 @@ async function fetchJSONData() {
 }
 
 async function writeStatsToSite() {
+    document.getElementById('stats').innerHTML = "<p>Loading player stats...</p>";
+    
     const envelope = await fetchJSONData();
 
     if (envelope && envelope.stats && envelope.stats.skillvalues) {
