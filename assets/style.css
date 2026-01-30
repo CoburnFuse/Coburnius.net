@@ -112,7 +112,7 @@ table{
     max-width:100%;
 }
 
-td:first-child:before{
+td:not(.rsTable td):first-child:before {
     content: "❄ ";
 }
 
@@ -124,10 +124,6 @@ td:first-child:before{
 .homepageTable td:nth-child(2){
     width:auto;
     word-break:break-word;
-}
-
-.rsTable td:first-child:before{
-    content: "";
 }
 
 .rsTable td:nth-child(1), td:nth-child(3){
