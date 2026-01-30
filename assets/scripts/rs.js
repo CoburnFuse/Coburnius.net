@@ -53,7 +53,7 @@ async function writeStatsToSite() {
             <table class='rsTable'>
                 ${tableRows}
             </table>
-            <small>Last updated at the <b>${lastUpdated}</b></small>
+            <small>Last updated on the <b>${lastUpdated}</b></small>
         `;
 
         document.getElementById('stats').innerHTML = statsToPushToPage;
