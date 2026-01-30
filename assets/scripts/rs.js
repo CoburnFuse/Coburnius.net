@@ -22,7 +22,7 @@ async function writeStatsToSite() {
 
     if (envelope && envelope.stats && envelope.stats.skillvalues) {
         const data = envelope.stats;
-        const lastUpdated = new Date(envelope.lastUpdated).toLocaleString();
+        const lastUpdated = dateTimeFormat(new Date(envelope.lastUpdated));
         
         const statsArray = data.skillvalues.sort((a, b) => a.id - b.id);
         let tableRows = "";
@@ -53,7 +53,7 @@ async function writeStatsToSite() {
             <table class='rsTable'>
                 ${tableRows}
             </table>
-            <small>Last updated at <b>${lastUpdated}</b></small>
+            <small>Last updated at the <b>${lastUpdated}</b></small>
         `;
 
         document.getElementById('stats').innerHTML = statsToPushToPage;
