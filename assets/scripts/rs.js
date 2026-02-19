@@ -1,24 +1,25 @@
 const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction", "Summoning", "Dungeoneering", "Divination", "Invention", "Archaeology", "Necromancy"];
 
-async function fetchJSONData() {
+async function fetchJSONData(username) {
     try {
-        const workerUrl = `https://rs-api-proxy.coburnius.net/?t=${Date.now()}`;
+        const workerUrl = `https://rs-api-proxy.coburnius.net/?user=${username}&t=${Date.now()}`;
         const response = await fetch(workerUrl);
-        const text = await response.text();
         
-        console.log("Raw Worker Response:", text);
+        if (!response.ok) throw new Error("User not found or worker error");
         
-        const data = JSON.parse(text);
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error('Frontend Fetch Error:', error);
+        return null;
     }
 }
 
-async function writeStatsToSite() {
-    document.getElementById('stats').innerHTML = "<p>Loading player stats...</p>";
+async function writeStatsToSite(username) {
+    const statsContainer = document.getElementById('stats');
+    statsContainer.innerHTML = `<p>Loading stats for ${username}...</p>`;
     
-    const envelope = await fetchJSONData();
+    const envelope = await fetchJSONData(username);
 
     if (envelope && envelope.stats && envelope.stats.skillvalues) {
         const data = envelope.stats;
@@ -53,11 +54,11 @@ async function writeStatsToSite() {
             <table class='rsTable'>
                 ${tableRows}
             </table>
-            <small>Last updated on the <b>${lastUpdated}</b></small>
+            <p><small>Last updated: <b>${lastUpdated}</b></small></p>
         `;
 
-        document.getElementById('stats').innerHTML = statsToPushToPage;
+        statsContainer.innerHTML = statsToPushToPage;
+    } else {
+        statsContainer.innerHTML = `<p style="color:red;">Could not load stats for ${username}.</p>`;
     }
 }
-
-writeStatsToSite();
