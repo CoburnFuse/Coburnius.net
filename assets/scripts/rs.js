@@ -21,6 +21,12 @@ async function writeStatsToSite(username) {
     
     const envelope = await fetchJSONData(username);
 
+    const getLevelStyle = (level) => {
+        if (level >= 120) return 'style="color: #00ffff;"';
+        if (level >= 99) return 'style="color: #ffd700;"';
+        return '';
+    };
+
     if (envelope && envelope.stats && envelope.stats.skillvalues) {
         const data = envelope.stats;
         const lastUpdated = dateTimeFormat(new Date(envelope.lastUpdated), true);
@@ -37,12 +43,15 @@ async function writeStatsToSite(username) {
             const level2 = hasSecondSkill ? statsArray[i + 1].level : "";
             const colon2 = hasSecondSkill ? ":" : "";
 
+            const style1 = getLevelStyle(level1);
+            const style2 = hasSecondSkill ? getLevelStyle(level2) : "";
+
             tableRows += `
                 <tr>
                     <td>${name1}:</td>
-                    <td>${level1}</td>
+                    <td ${style1}>${level1}</td>
                     <td style="padding-left: 20px;">${name2}${colon2}</td>
-                    <td>${level2}</td>
+                    <td ${style2}>${level2}</td>
                 </tr>`;
         }
 
