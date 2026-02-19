@@ -3,12 +3,12 @@ const path = require('path');
 
 const root = __dirname;
 const dist = path.join(root, 'dist');
-const includes = path.join(root, 'includes');
+const component = path.join(root, 'components');
 
-const navbar = fs.readFileSync(path.join(includes, 'navbar.html'), 'utf8');
-const header = fs.readFileSync(path.join(includes, 'header.html'), 'utf8');
+const navbar = fs.readFileSync(path.join(component, 'navbar.html'), 'utf8');
+const header = fs.readFileSync(path.join(component, 'header.html'), 'utf8');
 
-const skip = new Set(['build.js', 'package.json', 'README.md', 'dist', 'includes']);
+const skip = new Set(['build.js', 'package.json', 'README.md', 'dist', 'components']);
 
 function highlightCurrent(nav, page) {
     return nav.replace(/(<a\s+href=['"])([^'"]+)(['"][^>]*>)/g, (match, p1, href, p3) => {
