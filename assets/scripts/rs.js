@@ -17,6 +17,7 @@ async function fetchJSONData(username) {
 
 async function writeStatsToSite(username) {
     const statsContainer = document.getElementById('stats');
+    const updateContainer = document.getElementById('updateTime');
     statsContainer.innerHTML = `<p>Loading stats for ${username}...</p>`;
     
     const envelope = await fetchJSONData(username);
@@ -56,17 +57,17 @@ async function writeStatsToSite(username) {
         }
 
         const statsToPushToPage = `
-            <div style="margin-bottom: 10px;">
-                <strong>${data.name}</strong><br>
-                <span>Combat: ${data.combatlevel} / Total: ${data.totalskill}</span><br>
-            </div>
+            <p><strong>${data.name}</strong><br>Combat: ${data.combatlevel} / Total: ${data.totalskill}<p>
+            
             <table class='rsTable'>
                 ${tableRows}
             </table>
-            <p><small>Last updated: <b>${lastUpdated}</b></small></p>
         `;
 
+        const updateTimeToPushToPage = `<p><small>Last updated: <b>${lastUpdated}</b></small></p>`
+
         statsContainer.innerHTML = statsToPushToPage;
+        updateContainer.innerHTML = updateTimeToPushToPage;
     } else {
         statsContainer.innerHTML = `<p style="color:red;">Could not load stats for ${username}.</p>`;
     }
