@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = __dirname;
 const dist = path.join(root, 'dist');
-const component = path.join(root, 'components');
+const component = path.join(root, '/assets/components/');
 
 const navbar = fs.readFileSync(path.join(component, 'navbar.html'), 'utf8');
 const header = fs.readFileSync(path.join(component, 'header.html'), 'utf8');
