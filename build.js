@@ -1,54 +1,40 @@
-const fs = require('fs');
-const path = require('path');
+var fs = require('fs');
+var root = __dirname;
 
-const root = __dirname;
-const dist = path.join(root, 'dist');
-const component = path.join(root, '/assets/components/');
+//Set folders
+var distFolder = root + "/dist/";
+var pagesFolder = root + "/pages/";
+var componentsFolder = root + "/components/";
 
-const navbar = fs.readFileSync(path.join(component, 'navbar.html'), 'utf8');
-const header = fs.readFileSync(path.join(component, 'header.html'), 'utf8');
+function replaceContents() {
+    
+    //Create components
+    var componentNavbar = fs.readFileSync(componentsFolder + "/navbar.html", 'utf-8');
+    var componentHeader = fs.readFileSync(componentsFolder + "/header.html", 'utf-8');
 
-const skip = new Set(['build.js', 'package.json', 'README.md', 'dist', 'components']);
+    //Create dist folder if it doesnt exist yet
+    if (!fs.existsSync(distFolder)) {
+        fs.mkdirSync(distFolder);
+    }
 
-function highlightCurrent(nav, page) {
-    return nav.replace(/(<a\s+href=['"])([^'"]+)(['"][^>]*>)/g, (match, p1, href, p3) => {
-        if (href.replace(/^\//, '') === page && !/id=/.test(match)) {
-        return `${p1}${href}${p3.slice(0, -1)} id="currentPage">`;
+    //Copy everything from the pages folder and put it in the dist folder
+    fs.cpSync(pagesFolder, distFolder, {recursive:true});
+
+    //Put everything in an array to go through
+    var allFilesInFolders = fs.readdirSync(distFolder, {recursive:true})
+
+    //Go through everything in the dist folder and make changes as needed
+    allFilesInFolders.forEach(function (file){
+
+        //Skip if its a folder, folders (in my case) do not have dots
+        if(file.endsWith('.html')){
+            var fileContents = fs.readFileSync(distFolder + file, 'utf-8');
+            fileContents = fileContents.replace("<!-- NAVBAR_INCLUDE -->", componentNavbar);
+            fileContents = fileContents.replace("<!-- HEADER_INCLUDE -->", componentHeader);
+            fs.writeFileSync(distFolder + file, fileContents);
         }
-        return match;
-    });
-    }
-
-function copyFileSync(source, target) {
-    if (fs.existsSync(target) && fs.lstatSync(target).isDirectory()) {
-        target = path.join(target, path.basename(source));
-    }
-    fs.writeFileSync(target, fs.readFileSync(source));
+    })
 }
 
-function process(src, dest) {
-    if (!fs.existsSync(dest)) fs.mkdirSync(dest);
-
-    for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
-        if (skip.has(entry.name)) continue;
-
-        const from = path.join(src, entry.name);
-        const to = path.join(dest, entry.name);
-
-        if (entry.isDirectory()) {
-        process(from, to);
-        } else if (entry.name.endsWith('.html')) {
-        let content = fs.readFileSync(from, 'utf8');
-        const rel = path.relative(root, from).split(path.sep);
-        const page = rel.length === 1 ? entry.name : rel[0] + '.html';
-        content = content
-            .replace('<!-- NAVBAR_INCLUDE -->', highlightCurrent(navbar, page))
-            .replace('<!-- HEADER_INCLUDE -->', header);
-        fs.writeFileSync(to, content);
-        } else {
-        copyFileSync(from, to);
-        }
-    }
-}
-
-process(root, dist);
+//EXECUTE
+replaceContents();
