@@ -1,5 +1,4 @@
 var fs = require('fs');
-
 var root = __dirname;
 
 //Set folders
@@ -36,7 +35,11 @@ function replaceContents() {
 
             //Makes a copy of the navbar so it can be re-used
             var navbarToAdd = componentNavbar;
-            navbarToAdd = navbarToAdd.replace(`href='/${currentNav}.html'`, `href='/${currentNav}.html' id="currentPage"`);
+            navbarToAdd = navbarToAdd.replace(`href='/${currentNav}.html'`, `href='#' id="currentPage"`);
+
+            if(currentNav == "index"){
+                navbarToAdd = navbarToAdd.replace(`id="currentPage"`, `id="currentPage" onclick="playPoi()"`);
+            }
 
             //Replaces stuff and saves it to the dist folder
             fileContents = fileContents.replace("<!-- NAVBAR_INCLUDE -->", navbarToAdd);
