@@ -1,4 +1,5 @@
 var fs = require('fs');
+
 var root = __dirname;
 
 //Set folders
@@ -26,14 +27,23 @@ function replaceContents() {
     //Go through everything in the dist folder and make changes as needed
     allFilesInFolders.forEach(function (file){
 
-        //Skip if its a folder, folders (in my case) do not have dots
+        //Get the first folder (or file) for the navbar
+        var currentNav = file.split(/[./\\]/)[0];
+
+        //Skip anything that isnt an html file
         if(file.endsWith('.html')){
             var fileContents = fs.readFileSync(distFolder + file, 'utf-8');
-            fileContents = fileContents.replace("<!-- NAVBAR_INCLUDE -->", componentNavbar);
+
+            //Makes a copy of the navbar so it can be re-used
+            var navbarToAdd = componentNavbar;
+            navbarToAdd = navbarToAdd.replace(`href='/${currentNav}.html'`, `href='/${currentNav}.html' id="currentPage"`);
+
+            //Replaces stuff and saves it to the dist folder
+            fileContents = fileContents.replace("<!-- NAVBAR_INCLUDE -->", navbarToAdd);
             fileContents = fileContents.replace("<!-- HEADER_INCLUDE -->", componentHeader);
             fs.writeFileSync(distFolder + file, fileContents);
         }
-    })
+    });
 }
 
 //EXECUTE
