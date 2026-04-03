@@ -34,6 +34,7 @@
 <script>
     var audioPoi = new Audio('/assets/audio/poi.mp3')
     function playPoi(){
+        event.preventDefault();
         audioPoi.play();
     }
 </script>

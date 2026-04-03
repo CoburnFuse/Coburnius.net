@@ -35,7 +35,7 @@ function replaceContents() {
 
             //Makes a copy of the navbar so it can be re-used
             var navbarToAdd = componentNavbar;
-            navbarToAdd = navbarToAdd.replace(`href='/${currentNav}.html'`, `href='#' id="currentPage"`);
+            navbarToAdd = navbarToAdd.replace(`href='/${currentNav}.html'`, `href='/${currentNav}.html' id="currentPage"`);
 
             if(currentNav == "index"){
                 navbarToAdd = navbarToAdd.replace(`id="currentPage"`, `id="currentPage" onclick="playPoi()"`);
