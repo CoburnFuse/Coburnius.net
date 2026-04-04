@@ -1,19 +1,19 @@
 /*Assets*/
 @font-face {
-    font-family: 'Quicksand';
-    src: url(/assets/fonts/Quicksand-Regular.ttf);
+    font-family: 'BalsamiqSans';
+    src: url(/assets/fonts/BalsamiqSans-Regular.ttf);
     font-weight:normal;
 }
 
 @font-face {
-    font-family: 'Quicksand';
-    src: url(/assets/fonts/Quicksand-Bold.ttf);
+    font-family: 'BalsamiqSans';
+    src: url(/assets/fonts/BalsamiqSans-Bold.ttf);
     font-weight:bold;
 }
 
 /*Overrides*/
 html {
-    font-family: 'Quicksand';
+    font-family: 'BalsamiqSans';
     background: url(/assets/images/background.jpg) no-repeat center center fixed;
     background-size:cover;
     font-size: 17px;
