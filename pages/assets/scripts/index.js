@@ -5,14 +5,9 @@ function updateTime() {
     document.querySelector("#time").textContent = dateTimeFormat(now, false);
 }
 
-function playPoi(){
-    event.preventDefault();
-    audioPoi.play();
-}
-
 currentPage.addEventListener("click", function (e) {
     e.preventDefault();
-    playPoi();
+    audioPoi.play();
 });
 
 updateTime();
