@@ -75,7 +75,7 @@ async function readRSDataFromProxy(username){
 
     //It shouldnt error unless the worker is dead, but a catch is required
     } catch (error) {
-        console.log(error.message);
+        document.querySelector("#mainInfo").innerHTML = `<b style="color:red">Unable to load character data... (${error.message})</b>`;
     }
 }
 
