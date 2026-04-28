@@ -32,8 +32,8 @@ async function readRSDataFromProxy(username){
             let statToPush = {
                 skillID:    characterStats.stats.skillvalues[i].id,
                 skillName:  skillNames[characterStats.stats.skillvalues[i].id],
-                skillLevel: characterStats.stats.skillvalues[i].level,
-                skillXP:    characterStats.stats.skillvalues[i].xp
+                skillLevel: parseInt(characterStats.stats.skillvalues[i].level),
+                skillXP:    parseInt(characterStats.stats.skillvalues[i].xp)
             };
     
             obtainedStats.push(statToPush);
@@ -42,6 +42,9 @@ async function readRSDataFromProxy(username){
         //Sort stats by ID
         obtainedStats.sort((a, b) => a.skillID - b.skillID);
 
+        //Puts stats for elite stats related stuff in arrays
+        const inventionUnlockStats = [obtainedStats[12].skillLevel, obtainedStats[13].skillLevel, obtainedStats[25].skillLevel];
+
         //Add main stats (name, total level, and combat level)
         infoToShow = 
         `<b>${username}</b><br>
@@ -49,12 +52,17 @@ async function readRSDataFromProxy(username){
 
         //Put everything in a table so it can be shown
         for(let i = 0; i <obtainedStats.length; i += 2){
-            let firstCol = `<td>${obtainedStats[i].skillName}: </td>${colorSkillLevel(obtainedStats[i].skillLevel)}</td>`
+            let firstCol = `<td>${obtainedStats[i].skillName}: </td>${colorSkillLevel(obtainedStats[i].skillLevel)}</td>`;
             let secondCol = "";
+
+            //Checks if invention is unlocked, if its not, it grays it out
+            if(obtainedStats[i].skillName == "Invention" && inventionUnlockStats.some(lv => lv < 80)){
+                firstCol = `<td style="color:gray">${obtainedStats[i].skillName}: </td><td style="color:gray">${obtainedStats[i].skillLevel}</td>`;
+            }
 
             //If there is an odd column, add it, otherwise skip it
             if(obtainedStats[i + 1]){
-                secondCol = `<td>${obtainedStats[i + 1]?.skillName}: </td><td>${colorSkillLevel(obtainedStats[i + 1]?.skillLevel)}</td>`
+                secondCol = `<td>${obtainedStats[i + 1]?.skillName}: </td>${colorSkillLevel(obtainedStats[i + 1]?.skillLevel)}</td>`
             }
 
             //Push the current row to the table
