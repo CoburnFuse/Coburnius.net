@@ -1,3 +1,5 @@
+import {dateTimeFormat} from "./library.js";
+
 var audioPoi = new Audio('/assets/audio/poi.mp3')
 
 function updateTime() {

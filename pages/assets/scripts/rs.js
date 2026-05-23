@@ -1,3 +1,5 @@
+import {dateTimeFormat} from "./library.js";
+
 //List of skillnames, ordered in the same way the API lists them with numbers
 const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction", "Summoning", "Dungeoneering", "Divination", "Invention", "Archaeology", "Necromancy"];
 
@@ -99,3 +101,11 @@ function colorSkillLevel(level){
         return `<td>${level}`
     }
 }
+
+//Loads the content, depending on the data provided on the page
+document.addEventListener("DOMContentLoaded", () => {
+    const username = document.getElementById("contentHolderMain")?.dataset.rsname;
+
+    //EXECUTE
+    readRSDataFromProxy(username);
+});

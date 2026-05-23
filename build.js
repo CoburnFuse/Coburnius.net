@@ -35,9 +35,26 @@ function replaceContents() {
             //Replaces stuff and saves it to the dist folder
             fileContents = fileContents.replace("<!-- NAVBAR_INCLUDE -->", navbarToAdd);
             fileContents = fileContents.replace("<!-- HEADER_INCLUDE -->", componentHeader);
+
+            //Adds scripts that are required for the page
+            fileContents = addRelevantScriptsToPage(file, fileContents);
+
             fs.writeFileSync(outputFolder + file, fileContents);
         }
     });
+}
+
+//For now a hacky way to add the modules to the relevant pages
+function addRelevantScriptsToPage(file, fileContents){
+    if(file == "index.html"){
+        return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->", `<script type="module" src="/assets/scripts/index.js"></script>`);
+    }else if(/gamesiplay\\runescape\\[^\\]+\.html/.test(file)){
+        
+        //Adds to any runescape user page
+        return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->",`<script type="module" src="/assets/scripts/rs.js"></script>`);
+    }else{
+        return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->", "");
+    }
 }
 
 //EXECUTE
