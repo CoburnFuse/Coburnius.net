@@ -134,6 +134,14 @@ td:not(.rsTable td):first-child:before {
     padding-right:20px;
 }
 
+.DNDCharacterTable td:before{
+    content: "❄ ";
+}
+
+.DNDCharacterTable{
+    width:100%;
+}
+
 /*Error related*/
 .error{
     color:#FF6666;
