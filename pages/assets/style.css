@@ -133,3 +133,8 @@ td:not(.rsTable td):first-child:before {
 .rsTable td:nth-child(2){
     padding-right:20px;
 }
+
+/*Error related*/
+.error{
+    color:#FF6666;
+}

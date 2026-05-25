@@ -85,20 +85,24 @@ async function readRSDataFromProxy(username){
     //It shouldnt error unless the worker is dead, but a catch is required
     } catch (error) {
         infoToShow = 
-        `<span style="color:red">Unable to load character data... (${error.message})<span><br><br>`;
+        `<span class="error">Unable to load character data... (${error.message})<span><br><br>`;
 
         document.querySelector("#mainInfo").innerHTML = `${infoToShow}`;
     }
 }
 
-//Adds a blue-silverish or golden color to stats having a certain milestone
-function colorSkillLevel(level){
-    if(level >= 120){
-        //Gives a blue-silverish color to stats that reached 120
-        return `<td style="color:#00ffff;"> ${level}`
+//Adds a color to stats having a certain milestone
+function colorSkillLevel(level, xp){
+    console.log(xp);
+    if(xp >= 2000000000){
+        //Gives a purple color to stats with max XP (though thats never gonna happen for me :P)
+        return `<td style="color:#b768a2;"> ${level}`
+    }else if(level >= 120){
+        //Gives a blue-ish color to stats that reached 120
+        return `<td style="color:#48d1cc;"> ${level}`
     }else if(level >= 99){
         //Gives a golden color to stats that reached 99
-        return `<td style="color:#ffd700;"> ${level}`
+        return `<td style="color:#f0e68c;"> ${level}`
     }else{
         return `<td>${level}`
     }
