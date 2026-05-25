@@ -5,13 +5,13 @@ const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "
 
 async function readRSDataFromProxy(username){
     const proxyUrl = `https://rs-api-proxy.coburnius.net/?user=${username}`;
+    let infoToShow;
 
     //Make request to get the JSON data of the character
     try {
         const response = await fetch(proxyUrl);
         const obtainedStats = [];
         let statsToShow = "";
-        let infoToShow;
 
         //Give an error response if fails to find the page
         if(!response.ok) {
@@ -49,8 +49,7 @@ async function readRSDataFromProxy(username){
 
         //Add main stats (name, total level, and combat level)
         infoToShow = 
-        `<b>${username}</b><br>
-        Combat: ${combatLevel} / Total: ${totalLevel}<br>`
+        `Combat: ${combatLevel} / Total: ${totalLevel}<br>`
 
         //Put everything in a table so it can be shown
         for(let i = 0; i <obtainedStats.length; i += 2){
@@ -85,7 +84,10 @@ async function readRSDataFromProxy(username){
 
     //It shouldnt error unless the worker is dead, but a catch is required
     } catch (error) {
-        document.querySelector("#mainInfo").innerHTML = `<b style="color:red">Unable to load character data... (${error.message})</b>`;
+        infoToShow = 
+        `<span style="color:red">Unable to load character data... (${error.message})<span><br><br>`;
+
+        document.querySelector("#mainInfo").innerHTML = `${infoToShow}`;
     }
 }
 
