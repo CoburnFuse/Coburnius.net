@@ -112,33 +112,33 @@ table{
     max-width: 100%;
 }
 
-td:not(.rsTable td):first-child:before {
+td:not(#rsTable td):first-child:before {
     content: "❄ ";
 }
 
-.homepageTable td:nth-child(1){
+#homepageTable td:nth-child(1){
     width: 160px;
     white-space: nowrap;
 }
 
-.homepageTable td:nth-child(2){
+#homepageTable td:nth-child(2){
     width: auto;
     word-break: break-word;
 }
 
-.rsTable td:nth-child(1), td:nth-child(3){
+#rsTable td:nth-child(1), td:nth-child(3){
     width: 200px;
 }
 
-.rsTable td:nth-child(2){
+#rsTable td:nth-child(2){
     padding-right: 20px;
 }
 
-.DNDCharacterTable td:before{
+#DNDCharacterTable td:before{
     content: "❄ ";
 }
 
-.DNDCharacterTable{
+#DNDCharacterTable{
     width: 100%;
 }
 
@@ -147,7 +147,7 @@ td:not(.rsTable td):first-child:before {
     color: #FF6666;
 }
 
-#rsTable{
+#rsTable, #stylingTable{
     .maxXP{
     color: #b768a2;
     }
