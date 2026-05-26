@@ -2,22 +2,22 @@
 @font-face {
     font-family: 'Quicksand';
     src: url(/assets/fonts/Quicksand-Regular.ttf);
-    font-weight:normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'Quicksand';
     src: url(/assets/fonts/Quicksand-Bold.ttf);
-    font-weight:bold;
+    font-weight: bold;
 }
 
 /*Overrides*/
 html {
     font-family: 'Quicksand';
     background: url(/assets/images/background.jpg) no-repeat center center fixed;
-    background-size:cover;
+    background-size: cover;
     font-size: 17px;
-    line-height:1.3;
+    line-height: 1.3;
     letter-spacing: 0.5px;
 }
 
@@ -27,8 +27,8 @@ html {
     padding: 20px;
     margin: -8px auto 0 auto;
     min-height: 720px;
-    color:white;
-    background-color:rgba(0, 0, 0, 0.75);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0 0 1rem 1rem;
 }
 
@@ -40,8 +40,8 @@ html {
 
 #navbar {
     background-color: #001a33; 
-    padding:10px; 
-    margin:0 -25px 20px -25px;
+    padding: 10px; 
+    margin: 0 -25px 20px -25px;
     font-size: 18px;
 }
 
@@ -59,15 +59,15 @@ html {
 }
 
 .objectCenter{
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .recommendationQuote{
     font-style: italic;
     font-weight: bold;
-    font-size:18px;
+    font-size: 18px;
 }
 
 /*Link stuff*/
@@ -109,7 +109,7 @@ a:hover {
 /*Tables*/
 table{
     margin-bottom: 10px;
-    max-width:100%;
+    max-width: 100%;
 }
 
 td:not(.rsTable td):first-child:before {
@@ -117,21 +117,21 @@ td:not(.rsTable td):first-child:before {
 }
 
 .homepageTable td:nth-child(1){
-    width:160px;
+    width: 160px;
     white-space: nowrap;
 }
 
 .homepageTable td:nth-child(2){
-    width:auto;
-    word-break:break-word;
+    width: auto;
+    word-break: break-word;
 }
 
 .rsTable td:nth-child(1), td:nth-child(3){
-    width:200px;
+    width: 200px;
 }
 
 .rsTable td:nth-child(2){
-    padding-right:20px;
+    padding-right: 20px;
 }
 
 .DNDCharacterTable td:before{
@@ -139,10 +139,28 @@ td:not(.rsTable td):first-child:before {
 }
 
 .DNDCharacterTable{
-    width:100%;
+    width: 100%;
 }
 
-/*Error related*/
+/*Font colors*/
 .error{
-    color:#FF6666;
+    color: #FF6666;
+}
+
+#rsTable{
+    .maxXP{
+    color: #b768a2;
+    }
+
+    .trueMastery{
+        color: #48d1cc;
+    }
+
+    .mastery{
+        color: #f0e68c;
+    }
+
+    .locked{
+        color:gray;
+    }
 }

@@ -58,7 +58,7 @@ async function readRSDataFromProxy(username){
 
             //Checks if invention is unlocked, if its not, it grays it out
             if(obtainedStats[i].skillName == "Invention" && inventionUnlockStats.some(lv => lv < 80)){
-                firstCol = `<td style="color:gray">${obtainedStats[i].skillName}: </td><td style="color:gray">${obtainedStats[i].skillLevel}</td>`;
+                firstCol = `<td class="locked">${obtainedStats[i].skillName}: </td><td class="locked">${obtainedStats[i].skillLevel}</td>`;
             }
 
             //If there is an odd column, add it, otherwise skip it
@@ -77,7 +77,7 @@ async function readRSDataFromProxy(username){
         document.querySelector("#mainInfo").innerHTML = `${infoToShow}`;
 
         //Update the table
-        document.querySelector("#individualStats").innerHTML = `<table class="rsTable"> ${statsToShow} </table>`;
+        document.querySelector("#individualStats").innerHTML = `<table id="rsTable"> ${statsToShow} </table>`;
 
         //Add last update time to table
         document.querySelector("#updateTime").innerHTML = `<p><small>Last updated: <b>${lastUpdated}</b></small></p>`
@@ -96,13 +96,13 @@ function colorSkillLevel(level, xp){
     console.log(xp);
     if(xp >= 2000000000){
         //Gives a purple color to stats with max XP (though thats never gonna happen for me :P)
-        return `<td style="color:#b768a2;"> ${level}`
+        return `<td class="maxXP"> ${level}`
     }else if(level >= 120){
         //Gives a blue-ish color to stats that reached 120
-        return `<td style="color:#48d1cc;"> ${level}`
+        return `<td class="TrueMastery"> ${level}`
     }else if(level >= 99){
         //Gives a golden color to stats that reached 99
-        return `<td style="color:#f0e68c;"> ${level}`
+        return `<td class="mastery"> ${level}`
     }else{
         return `<td>${level}`
     }
