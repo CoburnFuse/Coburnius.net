@@ -80,7 +80,7 @@ async function readRSDataFromProxy(username){
         document.querySelector("#individualStats").innerHTML = `<table id="rsTable"> ${statsToShow} </table>`;
 
         //Add last update time to table
-        document.querySelector("#updateTime").innerHTML = `<p><small>Last updated: <b>${lastUpdated}</b></small></p>`
+        document.querySelector("#updateTime").innerHTML = `<p>Last updated: <b>${lastUpdated}</b></p>`
 
     //It shouldnt error unless the worker is dead, but a catch is required
     } catch (error) {

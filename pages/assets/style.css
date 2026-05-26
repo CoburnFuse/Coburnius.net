@@ -1,18 +1,17 @@
 /*Assets*/
-@font-face {
+@font-face{
     font-family: 'Quicksand';
     src: url(/assets/fonts/Quicksand-Regular.ttf);
     font-weight: normal;
 }
 
-@font-face {
+@font-face{
     font-family: 'Quicksand';
     src: url(/assets/fonts/Quicksand-Bold.ttf);
     font-weight: bold;
 }
 
-/*Overrides*/
-html {
+html{
     font-family: 'Quicksand';
     background: url(/assets/images/background.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -21,8 +20,11 @@ html {
     letter-spacing: 0.5px;
 }
 
-/*IDs*/
-#contentHolderMain {
+a:hover{
+    text-decoration: underline;
+}
+
+#contentHolderMain{
     max-width: 620px;
     padding: 20px;
     margin: -8px auto 0 auto;
@@ -32,13 +34,13 @@ html {
     border-radius: 0 0 1rem 1rem;
 }
 
-#profilePicture {
+#profilePicture{
     border-radius: 50%;
     max-height: 200px;
     max-width: 200px;
 }
 
-#navbar {
+#navbar{
     background-color: #001a33; 
     padding: 10px; 
     margin: 0 -25px 20px -25px;
@@ -53,8 +55,11 @@ html {
     max-height: 350px;
 }
 
-/*Classes*/
-.textCenter {
+#time, #updateTime{
+    font-size: small;
+}
+
+.textCenter{
     text-align: center;
 }
 
@@ -68,20 +73,6 @@ html {
     font-style: italic;
     font-weight: bold;
     font-size: 18px;
-}
-
-/*Link stuff*/
-.linkNotExisting{
-    color: gray;
-}
-
-a {
-    color: #4da9ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 /*Gallery*/
@@ -112,12 +103,12 @@ table{
     max-width: 100%;
 }
 
-td:not(#rsTable td):first-child:before {
+td:not(#rsTable td):first-child:before{
     content: "❄ ";
 }
 
 #homepageTable td:nth-child(1){
-    width: 160px;
+    width: 170px;
     white-space: nowrap;
 }
 
@@ -142,9 +133,22 @@ td:not(#rsTable td):first-child:before {
     width: 100%;
 }
 
+#stylingTable td:nth-child(1){
+    width:200px;
+}
+
 /*Font colors*/
 .error{
     color: #FF6666;
+}
+
+.linkNotExisting, #rsTable .locked, #stylingTable .locked{
+    color: #808080;
+}
+
+a, .linkColor {
+    color: #4da9ff;
+    text-decoration: none;
 }
 
 #rsTable, #stylingTable{
@@ -158,9 +162,5 @@ td:not(#rsTable td):first-child:before {
 
     .mastery{
         color: #f0e68c;
-    }
-
-    .locked{
-        color:gray;
     }
 }
