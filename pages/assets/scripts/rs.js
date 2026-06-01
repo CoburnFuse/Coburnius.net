@@ -25,8 +25,13 @@ async function readRSDataFromProxy(username){
         const combatLevel = characterStats.stats.combatlevel;
         const totalLevel = characterStats.stats.totalskill;
         const totalXP = characterStats.stats.totalxp;
-        const lastUpdated = dateTimeFormat(new Date(characterStats.lastUpdated), true);
+        const lastUpdatedUnix = characterStats.lastUpdated;
+        const lastUpdated = dateTimeFormat(new Date(lastUpdatedUnix), false);
 
+        //Get current time for error checking, checking against a 2hr difference
+        const currentTimeUnix = Date.now();
+        const errorCheckTime = 120 * 60 * 1000;
+        
         //Go through all stats available and get all neccessary data
         for(let i = 0; i < characterStats.stats.skillvalues.length; i++){
 
@@ -53,7 +58,7 @@ async function readRSDataFromProxy(username){
 
         //Put everything in a table so it can be shown
         for(let i = 0; i <obtainedStats.length; i += 2){
-            let firstCol = `<td>${obtainedStats[i].skillName}: </td>${colorSkillLevel(obtainedStats[i].skillLevel)}</td>`;
+            let firstCol = `<td>${obtainedStats[i].skillName}: </td>${colorSkillLevel(obtainedStats[i].skillLevel, obtainedStats[i].skillXP)}</td>`;
             let secondCol = "";
 
             //Checks if invention is unlocked, if its not, it grays it out
@@ -63,7 +68,7 @@ async function readRSDataFromProxy(username){
 
             //If there is an odd column, add it, otherwise skip it
             if(obtainedStats[i + 1]){
-                secondCol = `<td>${obtainedStats[i + 1]?.skillName}: </td>${colorSkillLevel(obtainedStats[i + 1]?.skillLevel)}</td>`
+                secondCol = `<td>${obtainedStats[i + 1]?.skillName}: </td>${colorSkillLevel(obtainedStats[i + 1]?.skillLevel, obtainedStats[i + 1]?.skillXP)}</td>`
             }
 
             //Push the current row to the table
@@ -82,6 +87,12 @@ async function readRSDataFromProxy(username){
         //Add last update time to table
         document.querySelector("#updateTime").innerHTML = `<p>Last updated: <b>${lastUpdated}</b></p>`
 
+        //If the data is old, it will add a warning.
+        if (lastUpdatedUnix + errorCheckTime <= currentTimeUnix){
+            document.querySelector("#updateTime").innerHTML += (`<p class="error"><b>Character data currently out of date.</b><br> It's likely the runemetrics API is failing or that the worker is broken.</p>`);
+        }
+
+
     //It shouldnt error unless the worker is dead, but a catch is required
     } catch (error) {
         infoToShow = 
@@ -93,7 +104,6 @@ async function readRSDataFromProxy(username){
 
 //Adds a color to stats having a certain milestone
 function colorSkillLevel(level, xp){
-    console.log(xp);
     if(xp >= 2000000000){
         //Gives a purple color to stats with max XP (though thats never gonna happen for me :P)
         return `<td class="maxXP"> ${level}`
