@@ -133,7 +133,7 @@ td:not(#rsTable td):first-child:before{
     width: 100%;
 }
 
-#stylingTable td:nth-child(1){
+.stylingTable td:nth-child(1){
     width:200px;
 }
 
@@ -142,7 +142,7 @@ td:not(#rsTable td):first-child:before{
     color: #FF6666;
 }
 
-.linkNotExisting, #rsTable .locked, #stylingTable .locked{
+.linkNotExisting, #rsTable .locked, .stylingTable .locked{
     color: #808080;
 }
 
@@ -151,7 +151,7 @@ a, .linkColor {
     text-decoration: none;
 }
 
-#rsTable, #stylingTable{
+#rsTable, .stylingTable{
     .maxXP{
     color: #b768a2;
     }
@@ -161,6 +161,6 @@ a, .linkColor {
     }
 
     .mastery{
-        color: #f0e68c;
+        color: #eec44b;
     }
 }
