@@ -48,10 +48,10 @@ function replaceContents() {
 function addRelevantScriptsToPage(file, fileContents){
     if(file == "index.html"){
         return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->", `<script type="module" src="/assets/scripts/index.js"></script>`);
-    }else if(/gamesiplay[\/\\]runescape[\/\\][^\/\\]+\.html/.test(file)){
-
-        //Adds to any runescape user page
+    }else if(fileContents.includes("data-rsname=")){
         return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->",`<script type="module" src="/assets/scripts/rs.js"></script>`);
+    }else if(fileContents.includes("data-galleryroot=")){
+        return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->",`<script type="module" src="/assets/scripts/gallery.js"></script>`);
     }else{
         return fileContents = fileContents.replace("<!-- SCRIPT_INCLUDE -->", "");
     }
