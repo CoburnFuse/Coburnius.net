@@ -15,7 +15,7 @@ async function getData(root) {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-
+        
         //Turns the JSON file into an array
         output = await response.json();
 
@@ -23,7 +23,8 @@ async function getData(root) {
         createGallery(output, root);
 
     } catch (error) {
-        console.error(error.message);
+        galleryContainer.innerHTML = `<p class="error">Unable to load gallery images.</p>`;
+        console.log(error.message);
     }
 }
 
