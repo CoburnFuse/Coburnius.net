@@ -5,7 +5,7 @@ const galleryContainer = document.getElementById("gallery");
 async function getData(root) {
 
     //Reads and encodes the location, and decodes the root part because it is stupid and cant read URLs properly
-    const jsonLocation = encodeURI(decodeURI(root) + "files.json");
+    const jsonLocation = encodeURI(decodeURI("https://wrk-gallery.coburnius-dev.workers.dev/?directory=" + root));
 
     //Attempts to fetch the JSON file containing the file names
     try {
@@ -20,7 +20,7 @@ async function getData(root) {
         output = await response.json();
 
         //Creates the gallery
-        createGallery(output, root);
+        createGallery(output);
 
     } catch (error) {
         galleryContainer.innerHTML = `<p class="error">Unable to load gallery images.</p>`;
@@ -28,13 +28,14 @@ async function getData(root) {
     }
 }
 
-function createGallery(images, root){
+function createGallery(images){
 
     //Goes through each file in the array and puts them in the gallery element
     images.forEach(element => {
 
-        //Adds the root to it, otherwise it would be just the file name, and then adds it to the element
-        element = root + element;
+        //Adds the root of the CDN to the element
+        element = "https://cdn.coburnius.net/" + element;
+
         galleryContainer.innerHTML += `<a href="${element}"><img src="${element}"></a>`;
     });
 }
