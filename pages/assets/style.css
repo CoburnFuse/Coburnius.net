@@ -14,7 +14,7 @@
 html{
     font-family: 'Quicksand';
     /*background: url(/assets/images/background.jpg) no-repeat center center fixed;*/
-    background: linear-gradient(45deg,rgba(0, 61, 117, 1) 0%, rgba(71, 129, 226, 1) 100%)  no-repeat center center fixed;
+    background: linear-gradient(45deg,#003d75 0%, #4781e2 100%)  no-repeat center center fixed;
     background-size: cover;
     font-size: 17px;
     line-height: 1.3;
