@@ -4,7 +4,7 @@ import {dateTimeFormat} from "./library.js";
 const skillNames = ["Attack", "Defence", "Strength", "Constitution", "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking", "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction", "Summoning", "Dungeoneering", "Divination", "Invention", "Archaeology", "Necromancy"];
 
 async function readRSDataFromProxy(username){
-    const proxyUrl = `https://rs-api-proxy.coburnius.net/?user=${username}`;
+    const proxyUrl = `https://wrk-araxxor.coburnius-dev.workers.dev/?username=${username}`;
     let infoToShow;
 
     //Make request to get the JSON data of the character
@@ -22,9 +22,9 @@ async function readRSDataFromProxy(username){
         const characterStats = await response.json();
 
         //Get all other data needed
-        const combatLevel = characterStats.stats.combatlevel;
-        const totalLevel = characterStats.stats.totalskill;
-        const totalXP = characterStats.stats.totalxp;
+        const combatLevel = characterStats.combatlevel;
+        const totalLevel = characterStats.totalskill;
+        const totalXP = characterStats.totalxp;
         const lastUpdatedUnix = characterStats.lastUpdated;
         const lastUpdated = dateTimeFormat(new Date(lastUpdatedUnix), false);
 
@@ -33,14 +33,14 @@ async function readRSDataFromProxy(username){
         const errorCheckTime = 120 * 60 * 1000;
         
         //Go through all stats available and get all neccessary data
-        for(let i = 0; i < characterStats.stats.skillvalues.length; i++){
+        for(let i = 0; i < characterStats.skillvalues.length; i++){
 
             //Get stats to push and push them
             let statToPush = {
-                skillID:    characterStats.stats.skillvalues[i].id,
-                skillName:  skillNames[characterStats.stats.skillvalues[i].id],
-                skillLevel: parseInt(characterStats.stats.skillvalues[i].level),
-                skillXP:    parseInt(characterStats.stats.skillvalues[i].xp)
+                skillID:    characterStats.skillvalues[i].id,
+                skillName:  skillNames[characterStats.skillvalues[i].id],
+                skillLevel: parseInt(characterStats.skillvalues[i].level),
+                skillXP:    parseInt(characterStats.skillvalues[i].xp)
             };
     
             obtainedStats.push(statToPush);
