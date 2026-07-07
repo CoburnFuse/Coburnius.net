@@ -13,7 +13,6 @@
 
 html{
     font-family: 'Quicksand';
-    /*background: url(/assets/images/background.jpg) no-repeat center center fixed;*/
     background: url(/assets/images/crackles.png) no-repeat center center fixed, linear-gradient(45deg,#003d75 0%, #4781e2 100%)  no-repeat center center fixed;
     background-blend-mode: soft-light;
     background-size: cover, cover;
