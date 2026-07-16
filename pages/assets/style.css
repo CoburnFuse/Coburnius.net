@@ -99,56 +99,48 @@ a:hover{
 
 /*Tables*/
 table{
+    display: grid;
+    column-gap: 15px;
+    overflow-x: scroll;
     margin-bottom: 10px;
-    max-width: 100%;
+    width:100%;
+}
+
+table th,
+table td {
+    white-space: nowrap;
+}
+
+table thead,
+table tbody,
+table tr {
+    display: contents;
 }
 
 td:not(#rsTable td, #inazumaTeamTable td):first-child:before{
     content: "❄ ";
 }
 
-#homepageTable td:nth-child(1){
-    width: 170px;
-    white-space: nowrap;
-}
-
-#homepageTable td:nth-child(2){
-    width: auto;
-    word-break: break-word;
-}
-
-#rsTable td:nth-child(1),#rsTable td:nth-child(3){
-    width: 200px;
-}
-
-#rsTable td:nth-child(2){
-    padding-right: 20px;
-}
-
 #DNDCharacterTable td:before{
     content: "❄ ";
 }
 
+/*Specific Tables*/
+#homepageTable{
+    grid-template-columns: 170px 1fr;
+}
+
+#rsTable{
+    grid-template-columns: 1fr auto 1fr auto;
+}
+
+#inazumaTeamTable{
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+}
+
 #DNDCharacterTable{
-    width: 100%;
+    grid-template-columns: 1fr 1fr;
 }
-
-.stylingTable td:nth-child(1){
-    width:200px;
-}
-
-#inazumaTeamTable td:nth-child(1){
-    width:200px;
-}
-
-#inazumaTeamTable td:nth-child(2){
-    width:120px;
-}
-
-#inazumaTeamTable td{
-    border-bottom: 1px solid gray;
-}
-
 
 /*Font colors*/
 .error{
