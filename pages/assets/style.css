@@ -103,7 +103,7 @@ table{
     max-width: 100%;
 }
 
-td:not(#rsTable td):first-child:before{
+td:not(#rsTable td, #inazumaTeamTable td):first-child:before{
     content: "❄ ";
 }
 
@@ -117,7 +117,7 @@ td:not(#rsTable td):first-child:before{
     word-break: break-word;
 }
 
-#rsTable td:nth-child(1), td:nth-child(3){
+#rsTable td:nth-child(1),#rsTable td:nth-child(3){
     width: 200px;
 }
 
@@ -136,6 +136,19 @@ td:not(#rsTable td):first-child:before{
 .stylingTable td:nth-child(1){
     width:200px;
 }
+
+#inazumaTeamTable td:nth-child(1){
+    width:200px;
+}
+
+#inazumaTeamTable td:nth-child(2){
+    width:120px;
+}
+
+#inazumaTeamTable td{
+    border-bottom: 1px solid gray;
+}
+
 
 /*Font colors*/
 .error{
