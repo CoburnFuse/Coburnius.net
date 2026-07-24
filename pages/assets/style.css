@@ -106,14 +106,11 @@ table{
     width:100%;
 }
 
-table th,
-table td {
+table th, table td{
     white-space: nowrap;
 }
 
-table thead,
-table tbody,
-table tr {
+table thead, table tbody, table tr{
     display: contents;
 }
 
@@ -140,6 +137,10 @@ td:not(#rsTable td, #inazumaTeamTable td):first-child:before{
 
 #DNDCharacterTable{
     grid-template-columns: 1fr 1fr;
+}
+
+.stylingTable{
+    grid-template-columns: 200px auto;
 }
 
 /*Font colors*/
